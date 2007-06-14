@@ -6,7 +6,7 @@
 Summary:	Provides a interface to Extended attributes for PHP
 Name:		php-%{modname}
 Version:	1.0
-Release:	%mkrel 14
+Release:	%mkrel 15
 Group:		Development/PHP
 URL:		http://pecl.php.net/package/xattr
 License:	PHP License
@@ -14,8 +14,6 @@ Source0:	xattr-%{version}.tar.bz2
 Patch0:		xattr-1.0-version.diff
 BuildRequires:	php-devel >= 3:5.2.0
 BuildRequires:	attr-devel
-Provides:	php5-xattr
-Obsoletes:	php5-xattr
 Epoch:		1
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
@@ -31,6 +29,15 @@ support them. Requires libattr from Linux XFS project.
 %patch0 -p0
 
 %build
+export CFLAGS="%{optflags}"
+export CXXFLAGS="%{optflags}"
+export FFLAGS="%{optflags}"
+
+%if %mdkversion >= 200710
+export CFLAGS="$CFLAGS -fstack-protector"
+export CXXFLAGS="$CXXFLAGS -fstack-protector"
+export FFLAGS="$FFLAGS -fstack-protector"
+%endif
 
 phpize
 %configure2_5x --with-libdir=%{_lib} \
@@ -59,5 +66,3 @@ EOF
 %doc tests CREDITS package.xml
 %config(noreplace) %attr(0644,root,root) %{_sysconfdir}/php.d/%{inifile}
 %attr(0755,root,root) %{_libdir}/php/extensions/%{soname}
-
-
