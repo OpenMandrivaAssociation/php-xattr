@@ -6,7 +6,7 @@
 Summary:	Provides a interface to Extended attributes for PHP
 Name:		php-%{modname}
 Version:	1.0
-Release:	%mkrel 15
+Release:	%mkrel 16
 Group:		Development/PHP
 URL:		http://pecl.php.net/package/xattr
 License:	PHP License
@@ -29,15 +29,7 @@ support them. Requires libattr from Linux XFS project.
 %patch0 -p0
 
 %build
-export CFLAGS="%{optflags}"
-export CXXFLAGS="%{optflags}"
-export FFLAGS="%{optflags}"
-
-%if %mdkversion >= 200710
-export CFLAGS="$CFLAGS -fstack-protector"
-export CXXFLAGS="$CXXFLAGS -fstack-protector"
-export FFLAGS="$FFLAGS -fstack-protector"
-%endif
+%serverbuild
 
 phpize
 %configure2_5x --with-libdir=%{_lib} \
