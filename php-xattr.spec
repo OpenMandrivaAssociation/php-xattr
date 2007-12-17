@@ -15,7 +15,6 @@ Patch0:		xattr-1.0-version.diff
 BuildRequires:	php-devel >= 3:5.2.0
 BuildRequires:	attr-devel
 Epoch:		1
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 This package allows to manipulate extended attributes on filesystems that
