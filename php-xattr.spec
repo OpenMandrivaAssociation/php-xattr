@@ -5,17 +5,16 @@
 
 Summary:	Provides a interface to Extended attributes for PHP
 Name:		php-%{modname}
-Version:	1.0
-Release:	%mkrel 21
+Version:	1.1.0
+Release:	%mkrel 1
 Group:		Development/PHP
-URL:		http://pecl.php.net/package/xattr
 License:	PHP License
-Source0:	xattr-%{version}.tar.bz2
-Patch0:		xattr-1.0-version.diff
+URL:		http://pecl.php.net/package/xattr
+Source0:	http://pecl.php.net/get/xattr-%{version}.tgz
 BuildRequires:	php-devel >= 3:5.2.0
 BuildRequires:	attr-devel
 Epoch:		1
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 This package allows to manipulate extended attributes on filesystems that
@@ -25,8 +24,6 @@ support them. Requires libattr from Linux XFS project.
 
 %setup -q -n xattr-%{version}
 [ "../package.xml" != "/" ] && mv ../package.xml .
-
-%patch0 -p0
 
 %build
 %serverbuild
@@ -39,7 +36,7 @@ phpize
 mv modules/*.so .
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot} 
+rm -rf %{buildroot} 
 
 install -d %{buildroot}%{_libdir}/php/extensions
 install -d %{buildroot}%{_sysconfdir}/php.d
@@ -63,7 +60,7 @@ if [ "$1" = "0" ]; then
 fi
 
 %clean
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %files 
 %defattr(-,root,root)
