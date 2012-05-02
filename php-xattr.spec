@@ -11,6 +11,7 @@ Group:		Development/PHP
 License:	PHP License
 URL:		http://pecl.php.net/package/xattr
 Source0:	http://pecl.php.net/get/xattr-%{version}.tgz
+Patch0:		xattr-1.1.0-php54x.diff
 BuildRequires:	php-devel >= 3:5.2.0
 BuildRequires:	attr-devel
 Epoch:		1
@@ -24,6 +25,8 @@ support them. Requires libattr from Linux XFS project.
 
 %setup -q -n xattr-%{version}
 [ "../package.xml" != "/" ] && mv ../package.xml .
+
+%patch0 -p0
 
 %build
 %serverbuild
