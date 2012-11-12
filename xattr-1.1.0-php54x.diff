@@ -1,0 +1,80 @@
+
+http://svn.php.net/viewvc/pecl/xattr/trunk/xattr.c?r1=256532&r2=297236
+http://svn.php.net/viewvc/pecl/xattr/trunk/xattr.c?r1=297236&r2=324524
+
+--- xattr.c	2008-07-01 17:11:03.000000000 +0200
++++ xattr.c.oden	2012-05-02 09:19:39.454056524 +0200
+@@ -47,7 +47,7 @@
+  *
+  * Every user visible function must have an entry in xattr_functions[].
+  */
+-function_entry xattr_functions[] = {
++zend_function_entry xattr_functions[] = {
+ 	PHP_FE(xattr_set,		NULL)
+ 	PHP_FE(xattr_get,		NULL)
+ 	PHP_FE(xattr_remove,	NULL)
+@@ -119,7 +119,11 @@ PHP_FUNCTION(xattr_set)
+ 	}
+ 
+ 	/* Enforce open_basedir and safe_mode */
+-	if (php_check_open_basedir(path TSRMLS_CC) || (PG(safe_mode) && !php_checkuid(path, NULL, CHECKUID_DISALLOW_FILE_NOT_EXISTS))) {
++	if (php_check_open_basedir(path TSRMLS_CC) 
++#if PHP_API_VERSION < 20100412
++	|| (PG(safe_mode) && !php_checkuid(path, NULL, CHECKUID_DISALLOW_FILE_NOT_EXISTS))
++#endif
++	) {
+ 		RETURN_FALSE;
+ 	}
+ 	
+@@ -168,7 +172,11 @@ PHP_FUNCTION(xattr_get)
+ 	}
+ 
+ 	/* Enforce open_basedir and safe_mode */
+-	if (php_check_open_basedir(path TSRMLS_CC) || (PG(safe_mode) && !php_checkuid(path, NULL, CHECKUID_DISALLOW_FILE_NOT_EXISTS))) {
++	if (php_check_open_basedir(path TSRMLS_CC) 
++#if PHP_API_VERSION < 20100412
++	|| (PG(safe_mode) && !php_checkuid(path, NULL, CHECKUID_DISALLOW_FILE_NOT_EXISTS))
++#endif
++	) {
+ 		RETURN_FALSE;
+ 	}
+ 	
+@@ -240,7 +248,11 @@ PHP_FUNCTION(xattr_supported)
+ 	}
+ 	
+ 	/* Enforce open_basedir and safe_mode */
+-	if (php_check_open_basedir(path TSRMLS_CC) || (PG(safe_mode) && !php_checkuid(path, NULL, CHECKUID_DISALLOW_FILE_NOT_EXISTS))) {
++	if (php_check_open_basedir(path TSRMLS_CC) 
++#if PHP_API_VERSION < 20100412
++	|| (PG(safe_mode) && !php_checkuid(path, NULL, CHECKUID_DISALLOW_FILE_NOT_EXISTS))
++#endif
++	) {
+ 		RETURN_NULL();
+ 	}
+ 	
+@@ -285,7 +297,11 @@ PHP_FUNCTION(xattr_remove)
+ 	}
+ 	
+ 	/* Enforce open_basedir and safe_mode */
+-	if (php_check_open_basedir(path TSRMLS_CC) || (PG(safe_mode) && !php_checkuid(path, NULL, CHECKUID_DISALLOW_FILE_NOT_EXISTS))) {
++	if (php_check_open_basedir(path TSRMLS_CC) 
++#if PHP_API_VERSION < 20100412
++	|| (PG(safe_mode) && !php_checkuid(path, NULL, CHECKUID_DISALLOW_FILE_NOT_EXISTS))
++#endif
++	) {
+ 		RETURN_FALSE;
+ 	}
+ 	
+@@ -334,7 +350,11 @@ PHP_FUNCTION(xattr_list)
+ 	}
+ 	
+ 	/* Enforce open_basedir and safe_mode */
+-	if (php_check_open_basedir(path TSRMLS_CC) || (PG(safe_mode) && !php_checkuid(path, NULL, CHECKUID_DISALLOW_FILE_NOT_EXISTS))) {
++	if (php_check_open_basedir(path TSRMLS_CC) 
++#if PHP_API_VERSION < 20100412
++	|| (PG(safe_mode) && !php_checkuid(path, NULL, CHECKUID_DISALLOW_FILE_NOT_EXISTS))
++#endif
++	) {
+ 		RETURN_FALSE;
+ 	}
+ 	
