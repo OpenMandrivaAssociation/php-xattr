@@ -5,8 +5,8 @@
 
 Summary:	Provides a interface to Extended attributes for PHP
 Name:		php-%{modname}
-Version:	1.1.0
-Release:	25
+Version:	1.2.0
+Release:	1
 Group:		Development/PHP
 License:	PHP License
 URL:		http://pecl.php.net/package/xattr
@@ -278,4 +278,5 @@ fi
 
 * Tue Aug 24 2004 Oden Eriksson <oeriksson@mandrakesoft.com> 5.0.1_1.0-1mdk
 - initial mandrake package
+
 
