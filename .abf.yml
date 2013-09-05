@@ -1,2 +1,4 @@
+removed_sources:
+  xattr-1.1.0.tgz: cbccb0e5c806e8ed1ba215d6e278ed7b2b5e254a
 sources:
-  "xattr-1.1.0.tgz": cbccb0e5c806e8ed1ba215d6e278ed7b2b5e254a
+  xattr-1.2.0.tgz: 0f80c3f8ddfaf35f01552da5d5d24bc46ad60259

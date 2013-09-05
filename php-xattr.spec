@@ -5,13 +5,12 @@
 
 Summary:	Provides a interface to Extended attributes for PHP
 Name:		php-%{modname}
-Version:	1.1.0
-Release:	25
+Version:	1.2.0
+Release:	1
 Group:		Development/PHP
 License:	PHP License
 URL:		http://pecl.php.net/package/xattr
 Source0:	http://pecl.php.net/get/xattr-%{version}.tgz
-Patch0:		xattr-1.1.0-php54x.diff
 BuildRequires:	php-devel >= 3:5.2.0
 BuildRequires:	attr-devel
 Epoch:		1
@@ -25,7 +24,6 @@ support them. Requires libattr from Linux XFS project.
 %setup -q -n xattr-%{version}
 [ "../package.xml" != "/" ] && mv ../package.xml .
 
-%patch0 -p0
 
 %build
 %serverbuild
@@ -278,4 +276,5 @@ fi
 
 * Tue Aug 24 2004 Oden Eriksson <oeriksson@mandrakesoft.com> 5.0.1_1.0-1mdk
 - initial mandrake package
+
 
