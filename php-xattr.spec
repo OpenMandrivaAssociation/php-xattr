@@ -7,7 +7,7 @@ Summary:	Provides a interface to Extended attributes for PHP
 Name:		php-%{modname}
 Epoch:		1
 Version:	1.2.0
-Release:	8
+Release:	9
 Group:		Development/PHP
 License:	PHP License
 Url:		http://pecl.php.net/package/xattr
