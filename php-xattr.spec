@@ -10,7 +10,7 @@ Version:	1.2.0
 Release:	11
 Group:		Development/PHP
 License:	PHP License
-Url:		http://pecl.php.net/package/xattr
+Url:		https://pecl.php.net/package/xattr
 Source0:	http://pecl.php.net/get/xattr-%{version}.tgz
 BuildRequires:	php-devel >= 3:5.2.0
 BuildRequires:	attr-devel
